@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 11 </h1>
+
+<form>
+Tiempo: <input type="text" id="tiempo" name="tiempo"><br>
+Precio: <input type="text" id="resul" name="resul"><br>
+<input type="button" onclick="calcular()" value="Calcular Coste"><br>
+</form>
+<script>
+
+function calcular(){
+  var tiempo = parseInt(document.getElementById("tiempo").value);
+
+  if(tiempo <=0){
+    document.getElementById("resul").value = "Debe ser almenos 1";
+  }
+  else if(tiempo < 3){
+    document.getElementById("resul").value = tiempo * 40;
+  }
+  else if(tiempo < 7 && tiempo >2){
+    document.getElementById("resul").value = tiempo * 40 - 20;
+  }
+  else if(tiempo >= 7){
+    document.getElementById("resul").value = tiempo * 40 - 50;
+  }
+}
+</script>
+</body>
+</html>

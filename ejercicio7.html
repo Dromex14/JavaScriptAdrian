@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 7 </h1>
+
+<h2>Calculadora sin funciones</h2>
+  <form>
+    <input type="text" name="op1" id="op1">
+    <select id="operaciones">
+        <option value="+" selected="selected">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" name="op2" id="op2">
+    <input type="button" onclick="calculadora()" value="Calcular"><br>
+    Resultado: <input type="text" name="resultado" id="resultado">
+  </form>
+
+<script>
+function calculadora(){
+
+var num1 = parseInt(document.getElementById("op1").value);
+var num2 = parseInt(document.getElementById("op2").value);
+var operador = document.getElementById("operaciones").value;
+if(operador === "+"){
+  var numTotal = num1 + num2;
+  document.getElementById("resultado").value = numTotal;
+}
+else if(operador === "-"){
+  var numTotal = num1 - num2;
+  document.getElementById("resultado").value = numTotal;
+}
+else if(operador === "*"){
+  var numTotal = num1 * num2;
+  document.getElementById("resultado").value = numTotal;
+}
+else if(operador === "/" && num2 != 0){
+  var numTotal = num1 / num2;
+  document.getElementById("resultado").value = numTotal;
+}
+else if(operador === "/" && num2 === 0){
+    document.getElementById("resultado").value = "No es divisible!";
+}
+}
+</script>
+
+<!--------------------------------------------------------------------------------->
+
+<h2>Calculadora sin funciones</h2>
+  <form>
+    <input type="text" name="op3" id="op3">
+    <select id="operaciones2">
+        <option value="+" selected="selected">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" name="op4" id="op4">
+    <input type="button" onclick="calculadora2()" value="Calcular"><br>
+    Resultado: <input type="text" name="resultado" id="resultado2">
+  </form>
+
+<script>
+function calculadora2(){
+
+var num3 = parseInt(document.getElementById("op3").value);
+var num4 = parseInt(document.getElementById("op4").value);
+var operador2 = document.getElementById("operaciones2").value;
+if(operador2 === "+"){
+  sumar(num3, num4);
+}
+else if(operador2 === "-"){
+  restar(num3, num4);
+}
+else if(operador2 === "*"){
+  multiplicar(num3, num4);
+}
+else if(operador2 === "/" && num4 != 0){
+  dividir(num3, num4);
+}
+else if(operador2 === "/" && num4 === 0){
+    document.getElementById("resultado2").value = "No es divisible!";
+}
+}
+
+function sumar(num3, num4){
+  var numTotal2 = num3 + num4;
+  document.getElementById("resultado2").value = numTotal2;
+}
+
+function restar(num3, num4){
+  var numTotal2 = num3 - num4;
+  document.getElementById("resultado2").value = numTotal2;
+}
+
+function multiplicar(num3, num4){
+  var numTotal2 = num3 * num4;
+  document.getElementById("resultado2").value = numTotal2;
+}
+
+function dividir(num3,num4){
+  var numTotal2 = num3 / num4;
+  document.getElementById("resultado2").value = numTotal2;
+}
+</script>
+
+</body>
+</html>

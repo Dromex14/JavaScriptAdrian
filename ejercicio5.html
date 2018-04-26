@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Gracias por jugar! </h1>
+
+<script>
+
+    var repetir="SI";
+    var ganador = false;
+    var numSecreto = Math.trunc(Math.random()* 4 + 1);
+
+while(repetir=="SI"){
+
+    ganador = false;
+    numSecreto = Math.trunc(Math.random()* 4 + 1);
+
+    for(i=1; i<=3;i++){
+      var numUsuario = parseInt(prompt("Introduce un numero."));
+      if (numSecreto == numUsuario){
+        alert("Felicidades! El numero era " + numSecreto);
+        ganador = true;
+        break;
+      }
+    }
+    if (ganador == false){
+      alert("Has perdido! El numero era " + numSecreto);
+    }
+    repetir = prompt("Volver a jugar? (SI|NO)");
+    repetir = repetir.toUpperCase();
+  }
+</script>
+
+</body>
+</html>

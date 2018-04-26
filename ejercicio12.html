@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 11 </h1>
+
+<form>
+Tiempo: <input type="text" id="tiempo" name="tiempo"><br>
+Precio: <input type="text" id="resul" name="resul"><br>
+<input type="button" onclick="calcular()" value="Calcular Coste"><br>
+</form>
+<script>
+
+
+function calcular(){
+  noches = calcularHotel();
+
+
+
+}
+
+function calcularHotel(){
+  var tiempo=
+  var noches = parseInt(document.getElementById("noch").value) * 140;
+  document.getElementById("resul").value = noches;
+  return noches;
+}
+
+function calcularAvion(){
+  var destino = document.getElementById("destinos").value;
+  var tiempo = parseInt(document.getElementById("tiempo").value);
+
+  if(tiempo <= 0){
+    alert("La estancia debe ser almenos 1 dia");
+  }
+  else if (destino == "Oviedo" && tiempo <4){
+      document.getElementById("resul").value = 325;
+  }
+  else if (destino == "Oviedo" && tiempo >3 ){
+      document.getElementById("resul").value = 325 - 32.5;
+  }
+
+  else if (destino == "Tokyo" && tiempo <4){
+      document.getElementById("resul").value = 1200;
+  }
+  else if (destino == "Tokyo" && tiempo >3 ){
+      document.getElementById("resul").value = 1200 - 120;
+  }
+  if (destino == "Madrid" && tiempo <4){
+      document.getElementById("resul").value = 200;
+  }
+  else if (destino == "Madrid" && tiempo >3 ){
+      document.getElementById("resul").value = 325 - 20;
+  }
+  if (destino == "Barcelona" && tiempo <4){
+      document.getElementById("resul").value = 150;
+  }
+  else if (destino == "Barcelona" && tiempo >3 ){
+      document.getElementById("resul").value = 150 - 15;
+  }
+}
+  function calcularCoche(){
+    var tiempo = parseInt(document.getElementById("tiempo").value);
+
+    if(tiempo <=0){
+      document.getElementById("resul").value = "El alquiler del coche debe ser de almenos 1 dia";
+    }
+    else if(tiempo < 3){
+      document.getElementById("resul").value = tiempo * 40;
+    }
+    else if(tiempo < 7 && tiempo >2){
+      document.getElementById("resul").value = tiempo * 40 - 20;
+    }
+    else if(tiempo >= 7){
+      document.getElementById("resul").value = tiempo * 40 - 50;
+    }
+}
+
+</script>
+</body>
+</html>

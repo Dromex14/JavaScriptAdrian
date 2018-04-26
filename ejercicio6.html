@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 6 </h1>
+
+<form>
+Grados Centigrados: <input type="text" id="cent"><br>
+Grados Farenheit: <input type="text" id="far"><br>
+<input type="button" onclick="conversion()" value="Calcular">
+</form>
+<script>
+function conversion(){
+  var resultado = document.getElementById("cent").value;
+  resultado = resultado * (9/5) + 32;
+  document.getElementById("far").value = resultado;
+}
+
+</script>
+
+</body>
+</html>

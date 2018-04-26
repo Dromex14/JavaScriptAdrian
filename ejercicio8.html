@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 8 </h1>
+
+<form>
+Euros: <input type="text" id="eur" name="eur"><br>
+Dolares: <input type="text" id="dol" name="dol"><br>
+<input type="button" onclick="conversion()" value="Calcular">
+</form>
+<script>
+function conversion(){
+  var resultado = parseInt(document.getElementById("eur").value) * 1.233038;
+  resultado = Math.round(resultado * 100)/100;
+  document.getElementById("dol").value = resultado;
+}
+
+</script>
+
+</body>
+</html>
