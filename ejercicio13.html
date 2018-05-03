@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 13 </h1>
+<form onsubmit="decirNombre()">
+  Nombre: <input type="text" id="nombre" name="nombre">
+  <input type="button" onclick="decirNombre()" value="Enviar formulario">
+</form>
+<script>
+
+  function decirNombre(){
+    nombre = document.getElementById("nombre").value
+    alert(nombre);
+  }
+</script>
+
+</body>
+</html>

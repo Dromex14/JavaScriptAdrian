@@ -3,10 +3,18 @@
 <head>
 </head>
 <body>
-<h1> Ejercicio 11 </h1>
+<h1> Ejercicio 12 </h1>
 
 <form>
-Tiempo: <input type="text" id="tiempo" name="tiempo"><br>
+Destino:<select id="destinos">
+        <option value="Oviedo" selected="selected">Oviedo</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Madrid">Madrid</option>
+        <option value="Barcelona">Barcelona</option>
+    </select><br>
+Tiempo Hotel: <input type="text" id="tiempoH" name="tiempoH"><br>
+Tiempo Coche: <input type="text" id="tiempoC" name="tiempoC"><br>
+Tiempo Avión: <input type="text" id="tiempoA" name="tiempoA"><br>
 Precio: <input type="text" id="resul" name="resul"><br>
 <input type="button" onclick="calcular()" value="Calcular Coste"><br>
 </form>
@@ -14,66 +22,57 @@ Precio: <input type="text" id="resul" name="resul"><br>
 
 
 function calcular(){
-  noches = calcularHotel();
-
-
-
+  if(document.getElementById("tiempoH").value < 1 || document.getElementById("tiempoC").value < 1 || document.getElementById("tiempoA").value < 1){
+    document.getElementById("resul").value = "Tiempo no valido";
+  }
+  noches = calcularHotel(document.getElementById("tiempoH").value);
+  estancia = calcularAvion(document.getElementById("tiempoA").value, document.getElementById("destinos").value);
+  alquiler = calcularCoche(document.getElementById("tiempoC").value);
+  document.getElementById("resul").value = noches + estancia + alquiler;
 }
 
-function calcularHotel(){
-  var tiempo=
-  var noches = parseInt(document.getElementById("noch").value) * 140;
-  document.getElementById("resul").value = noches;
+function calcularHotel(tiempo){
+  var noches = parseInt(tiempo) * 140;
   return noches;
 }
 
-function calcularAvion(){
-  var destino = document.getElementById("destinos").value;
-  var tiempo = parseInt(document.getElementById("tiempo").value);
+function calcularAvion(tiempo, destino){
 
-  if(tiempo <= 0){
-    alert("La estancia debe ser almenos 1 dia");
-  }
-  else if (destino == "Oviedo" && tiempo <4){
-      document.getElementById("resul").value = 325;
+  if (destino == "Oviedo" && tiempo <4){
+      return 325;
   }
   else if (destino == "Oviedo" && tiempo >3 ){
-      document.getElementById("resul").value = 325 - 32.5;
+      return 325 - 32.5;
   }
-
   else if (destino == "Tokyo" && tiempo <4){
-      document.getElementById("resul").value = 1200;
+      return 1200;
   }
   else if (destino == "Tokyo" && tiempo >3 ){
-      document.getElementById("resul").value = 1200 - 120;
+      return 1200 - 120;
   }
   if (destino == "Madrid" && tiempo <4){
-      document.getElementById("resul").value = 200;
+      return 200;
   }
   else if (destino == "Madrid" && tiempo >3 ){
-      document.getElementById("resul").value = 325 - 20;
+      return 325 - 20;
   }
   if (destino == "Barcelona" && tiempo <4){
-      document.getElementById("resul").value = 150;
+      return 150;
   }
   else if (destino == "Barcelona" && tiempo >3 ){
-      document.getElementById("resul").value = 150 - 15;
+      return 150 - 15;
   }
 }
-  function calcularCoche(){
-    var tiempo = parseInt(document.getElementById("tiempo").value);
+  function calcularCoche(tiempo){
 
-    if(tiempo <=0){
-      document.getElementById("resul").value = "El alquiler del coche debe ser de almenos 1 dia";
-    }
-    else if(tiempo < 3){
-      document.getElementById("resul").value = tiempo * 40;
+    if(tiempo < 3){
+      return tiempo * 40;
     }
     else if(tiempo < 7 && tiempo >2){
-      document.getElementById("resul").value = tiempo * 40 - 20;
+      return tiempo * 40 - 20;
     }
     else if(tiempo >= 7){
-      document.getElementById("resul").value = tiempo * 40 - 50;
+      return tiempo * 40 - 50;
     }
 }
 

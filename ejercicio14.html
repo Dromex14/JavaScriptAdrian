@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1> Ejercicio 12 </h1>
+
+<form>
+Nombre del cliente: <input type="text" id="nombre" name="nombre"><br><br>
+Material de la caja:<select id="materiales">
+        <option value="Madera" selected="selected">Madera</option>
+        <option value="Aluminio">Aluminio</option>
+        <option value="Cartón">Cartón</option>
+        <option value="Plastico">Plastico</option>
+    </select><br><br>
+Seleccione las dimensiones para la caja:<br><br>
+<input type="radio" name="tam" value="diminuta">Diminuta<br>
+<input type="radio" name="tam" value="mediana">Mediana<br>
+<input type="radio" name="tam" value="grande">Grande<br><br>
+Comentarios: <br>
+<textarea name="comentarios" id="comentarios" rows="5" cols="40"></textarea><br><br>
+Descripcion de la caja: <br>
+<textarea name="desc" id="desc" rows="5" cols="40"></textarea><br><br>
+<input type="button" onclick="describirCaja()" value="Enviar"><br>
+</form>
+<script>
+function describirCaja(){
+  var nombre = document.getElementById("nombre").value;
+  var material = document.getElementById("materiales").value;
+  var tamaños=document.getElementsByName("tam");
+  for (var i = 0; i < tamaños.length;i++){
+    if (tamaños[i].checked){
+      var tam = tamaños[i].value;
+    }
+  }
+  var comentarios = document.getElementById("comentarios").value;
+
+ var cadena = nombre + " ha pedido una caja de " + material + " con unas dimensiones " + tam + " y ha comentado: " + comentarios;
+ document.getElementById("desc").value = cadena;
+}
+</script>
+</body>
+</html>
