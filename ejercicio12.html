@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+
+  body{
+    background-image: url('fondo.gif');
+  }
+
+  .titulo{
+    background-color:  #884EA0;
+  }
+
+  .formulario{
+    background-color:  #884EA0;
+  }
+
+  </style>
 </head>
 <body>
-<h1> Ejercicio 12 </h1>
-
+  <div class="titulo">
+    <h1> Viajes Pedro </h1>
+  </div>
 <form>
+<div class="formulario">
 Destino:<select id="destinos">
         <option value="Oviedo" selected="selected">Oviedo</option>
         <option value="Tokyo">Tokyo</option>
@@ -18,6 +35,7 @@ Tiempo Avión: <input type="text" id="tiempoA" name="tiempoA"><br>
 Precio: <input type="text" id="resul" name="resul"><br>
 <input type="button" onclick="calcular()" value="Calcular Coste"><br>
 </form>
+</div>
 <script>
 
 

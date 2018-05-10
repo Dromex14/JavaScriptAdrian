@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+
+body{
+	background-color: rgb(158, 125, 191);
+}
+
+.contenedor {
+
+	display: flex;
+	width: 300px;
+	height: 40px;
+	color: black;
+	font-size: 35px;
+	line-height: 40px;
+
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	overflow: hidden;
+
+}
+
+  .boton{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: purple;
+    border-radius: 6px;
+    border: 2px solid black;
+  }
+
+div {
+	text-align: center;
+	margin-top: 1em;
+}
+ul {
+	list-style: none;
+	padding-left: 10px;
+	animation: cambiar 7s infinite;
+}
+
+ul, p {
+	margin: 0;
+}
+
+@keyframes cambiar {
+
+	0%{ margin-top: 0;}
+	20%{ margin-top: 0;}
+
+	25% {margin-top: -40px;}
+	50% {margin-top: -40px;}
+
+	55% {margin-top: -80px;}
+	80% {margin-top: -80px;}
+
+	85% {margin-top: -40px;}
+	95% {margin-top: -40px;}
+
+	100% {margin-top: 0;}
+}
+</style>
+</head>
+<body>
+
+
+
+<div class ="contenedor">
+<p>Hoy estoy</p>
+<ul>
+	<li> feliz </li>
+	<li> triste </li>
+	<li> feliz </li>
+	<li> triste </li>
+</ul>
+</div>
+<div>
+<button class="boton"  onclick="cambiarFeliz()">Feliz</button>
+<img id="imagen" width="20%" height="20%" src="neutro.png">
+<button class="boton" onclick="cambiarTriste()">Triste</button>
+</div>
+
+<script type="text/javascript">
+
+	function cambiarTriste(){
+		document.getElementById("imagen").src = "triste.png";
+	}
+
+	function cambiarFeliz(){
+		document.getElementById("imagen").src = "feliz.png";
+	}
+
+</script>
+</body>
+</html>
