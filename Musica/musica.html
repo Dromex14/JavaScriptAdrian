@@ -5,7 +5,7 @@
 <style type="text/css">
 
 body{
-	background-image: url("fondo.png");
+	background-color: rgb(158, 125, 191);
 }
 
 .contenedor {
@@ -48,6 +48,7 @@ ul {
 }
 
 ul, p {
+
 	margin: 0;
 }
 
@@ -74,32 +75,34 @@ ul, p {
 
 
 <div class ="contenedor">
-<p>Hoy estoy</p>
+<p>BIP</p>
 <ul>
-	<li> feliz </li>
-	<li> triste </li>
-	<li> feliz </li>
-	<li> triste </li>
+	<li> BUP! </li>
+	<li> BIP! </li>
+	<li> BUP! </li>
+	<li> BIP! </li>
 </ul>
 </div>
+<audio id="sonido" src="sonido.mp3"></audio>
 <div>
-<button class="boton" id="boton" onclick="cambiarCara('feliz')">Feliz</button>
-<img id="imagen" width="20%" height="20%" src="neutro.png">
-<button class="boton" id="boton" value="Triste" onclick="cambiarCara('triste')">Triste</button>
+<button class="boton" id="boton" onclick="reproductor('play')">Play</button>
+<img id="imagen" width="20%" height="20%" src="portada.png">
+<button class="boton" id="boton" onclick="reproductor('pause')">Pause</button>
 </div>
 
-<script type="text/javascript">
+<script>
 
-	function cambiarCara(valor){
+function reproductor(orden){
+var audio =document.getElementById("sonido");
 
-		if (valor == "feliz"){
-			document.getElementById("imagen").src = "feliz.png";
-		}
-		if (valor == "triste"){
-			document.getElementById("imagen").src = "triste.png";
-		}
-	}
-
+  if(orden == "play"){
+    audio.loop = true;
+    audio.play();
+  }
+  else{
+    audio.pause();
+  }
+}
 </script>
 </body>
 </html>
