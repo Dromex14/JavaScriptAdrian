@@ -3,103 +3,14 @@
 <head>
 
 	<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-
-<style>
-
-	body{
-    	background-image: url('fondo.gif');
-	}
-
-	.img{
-		max-width: 75%;
-	}
-
-	ul {
-    	list-style-type: none;
-    	max-width: 100%;
-    	padding: 0;
-    	overflow: hidden;
-    	background: rgba(0, 0, 0, 0.5);
-	}
-
-	li.logo{
-		float: left;
-		margin-right: 45%;
-	}
-
-	li.demas {
-    	float: left;
-    	margin-top: 4%;
-		margin-right: 5%;
-    	font-family: 'Anton', sans-serif;
-    	font-size: 1.5em;
-	}
-
-	li a {
-    	display: inline-block;
-    	color: white;
-    	text-align: center;
-    	text-decoration: none;
-	}
-
-	li a:hover {
-    	color: rgba(0, 243, 255);
-	}
-
-	li.logo a:hover {
-    	background-color: rgba(0, 0, 0, 0.3);
-	}
-
-	#oculto{
- 		margin-top: 5%;
- 		display:none;
- 		position: center;
-    	height: 100%;
-    	width: 100%;
- 		background: rgba(0, 0, 0, 0.5);
- 		color: rgba(0, 243, 255);
- 		font-family: 'Anton', sans-serif;
- 		align-content: center;
- 	}
-
-	input[type=text], select {
-    	width: 50%;
-    	padding: 12px 20px;
-   		margin: 8px 0;
-    	display: inline-block;
-    	border: 1px solid #ccc;
-    	border-radius: 4px;
-    	box-sizing: border-box;
-	}
-
-	input[type=button] {
-    	width: 10%;
-    	background-color: rgba(93, 240, 247);
-    	color: black;
-    	font-family: 'Anton', sans-serif;
-    	padding: 14px 20px;
-    	margin: 8px 0;
-    	border: none;
-    	border-radius: 4px;
-    	cursor: pointer;
-	}
-
-	input[type=button]:hover {
-    	background-color: rgba(52, 177, 183);
-	}
-
-	.boton{
-  		position: absolute;
-  		right:10em;
-    	top: 35em;
-	}
-</style>
+	<link href="estilo.css" rel="stylesheet">
+	<script src="funcion.js"> </script>
 
 </head>
 
 <body>
 	<ul>
-  		<li class="logo"><a href="#home"><img class="img" src="logo.png"></a></li>
+  		<li class="logo"><a href="#home"><img class="img" src="Img/logo.png"></a></li>
   		<li class="demas"><a href="#ofertas">Ofertas</a></li>
   		<li class="demas"><a href="#contacto">Contacto</a></li>
   		<li class="demas"><a href="#nosotros">Sobre Nosotros</a></li>
@@ -108,11 +19,11 @@
 	<div id="oculto">
 		<form class="formulario">
 			Destino:<select id="destinos">
-        		<option value="Oviedo" selected="selected">Oviedo</option>
-        		<option value="Tokyo">Tokyo</option>
-        		<option value="Madrid">Madrid</option>
-       	 		<option value="Barcelona">Barcelona</option>
-    		</select><br>
+        				<option value="Oviedo" selected="selected">Oviedo</option>
+        				<option value="Tokyo">Tokyo</option>
+        				<option value="Madrid">Madrid</option>
+       	 				<option value="Barcelona">Barcelona</option>
+    					</select><br>
 		Tiempo: <input type="text" id="tiempo"><br>
 		Precio Hotel: <input type="text" disabled="disabled" id="precioH" name="precioH"><br>
 		Precio Coche: <input type="text" disabled="disabled" id="precioC" name="precioC"><br>
@@ -125,89 +36,5 @@
 	<input type="button" onclick="mostrar()" value="Prepara tu viaje!" id="mostrar" class= "boton" style="display:block;"><br>
 	<input type="button" onclick="ocultar()" value="Cerrar" id="ocultar" class= "boton" style="display:none;"><br>
 
-
-	<script>
-
-	function calcular(){
-
-  		if(document.getElementById("tiempo").value < 1){
-    		document.getElementById("resul").value = "Tiempo no valido";
-  		}
-			else{
-  		noches = calcularHotel(document.getElementById("tiempo").value);
-  		estancia = calcularAvion(document.getElementById("tiempo").value, document.getElementById("destinos").value);
-  		alquiler = calcularCoche(document.getElementById("tiempo").value);
-			document.getElementById("precioH").value = noches + "€";
-			document.getElementById("precioC").value = alquiler + "€";
-			document.getElementById("precioA").value = estancia + "€";
-  		document.getElementById("resul").value = noches + estancia + alquiler + "€";
-		}
-	}
-
-	function calcularHotel(tiempo){
-  		var noches = parseInt(tiempo) * 140;
-  		return noches;
-	}
-
-	function calcularAvion(tiempo, destino){
-
-		  var precio;
-		  var porcentaje = 0.9;
-
-		  if(tiempo <= 0){
-		    alert("El tiempo debe ser almenos 1");
-		    document.getElementById("resul").value = "No valido";
-		  }
-
-		  else if (destino == "Oviedo"){
-		      precio = 325;
-		  }
-
-		  else if (destino == "Tokyo"){
-		      precio = 1200;
-		  }
-
-		  else if (destino == "Madrid"){
-		      precio = 200;
-		  }
-
-		  else if (destino == "Barcelona"){
-		      precio = 150;
-		  }
-
-		  if (tiempo > 3){
-		    return (precio * porcentaje);
-		  }
-		  else{
-		    return precio;
-		  }
-}
-
-function calcularCoche(tiempo){
-
-    	if(tiempo < 3){
-      		return tiempo * 40;
-    	}
-
-    	else if(tiempo < 7 && tiempo >2){
-      		return tiempo * 40 - 20;
-    	}
-    else if(tiempo >= 7){
-      return tiempo * 40 - 50;
-    }
-}
-
-function mostrar(){
-		document.getElementById('oculto').style.display = 'block';
-		document.getElementById('mostrar').style.display = 'none';
-		document.getElementById('ocultar').style.display = 'block';
-}
-
-function ocultar(){
-		document.getElementById('oculto').style.display = 'none';
-		document.getElementById('mostrar').style.display = 'block';
-		document.getElementById('ocultar').style.display = 'none';
-}
-</script>
 </body>
 </html>
