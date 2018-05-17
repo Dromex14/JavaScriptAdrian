@@ -92,7 +92,7 @@
   		position: absolute;
   		right:10em;
     	top: 35em;
-	}	
+	}
 </style>
 
 </head>
@@ -128,16 +128,16 @@
 	<script>
 
 	function calcular(){
-  		
+
   		if(document.getElementById("tiempoH").value < 1 || document.getElementById("tiempoC").value < 1 || document.getElementById("tiempoA").value < 1){
     		document.getElementById("resul").value = "Tiempo no valido";
   		}
-  		
+
   		noches = calcularHotel(document.getElementById("tiempoH").value);
   		estancia = calcularAvion(document.getElementById("tiempoA").value, document.getElementById("destinos").value);
   		alquiler = calcularCoche(document.getElementById("tiempoC").value);
   		document.getElementById("resul").value = noches + estancia + alquiler + "€";
-	}	
+	}
 
 	function calcularHotel(tiempo){
   		var noches = parseInt(tiempo) * 140;
@@ -146,37 +146,38 @@
 
 	function calcularAvion(tiempo, destino){
 
-  		if (destino == "Oviedo" && tiempo <4){
-      		return 325;
-  		}
-  	
-  		else if (destino == "Oviedo" && tiempo >3 ){
-      		return 325 - 32.5;
-  		}
-  
-  		else if (destino == "Tokyo" && tiempo <4){
-      		return 1200;
-  		}
-  
-  		else if (destino == "Tokyo" && tiempo >3 ){
-      		return 1200 - 120;
-  		}
+		  var precio;
+		  var porcentaje = 0.9;
 
-  		if (destino == "Madrid" && tiempo <4){
-      		return 200;
- 	 	}
-  
-  		else if (destino == "Madrid" && tiempo >3 ){
-      		return 325 - 20;
-  		}
-  
-  		if (destino == "Barcelona" && tiempo <4){
-      		return 150;
-  		}
-  
-  		else if (destino == "Barcelona" && tiempo >3 ){
-     		return 150 - 15;
-  		}
+		  if(tiempo <= 0){
+		    alert("El tiempo debe ser almenos 1");
+		    document.getElementById("resul").value = "No valido";
+		  }
+
+		  else if (destino == "Oviedo"){
+		      precio = 325;
+		  }
+
+		  else if (destino == "Tokyo"){
+		      precio = 1200;
+		  }
+
+		  else if (destino == "Madrid"){
+		      precio = 200;
+		  }
+
+		  else if (destino == "Barcelona"){
+		      precio = 150;
+		  }
+
+		  if (tiempo > 3){
+		    return (precio * porcentaje);
+		  }
+		  else{
+		    return precio;
+		  }
+
+
 }
 
 	function calcularCoche(tiempo){
@@ -184,7 +185,7 @@
     	if(tiempo < 3){
       		return tiempo * 40;
     	}
-    
+
     	else if(tiempo < 7 && tiempo >2){
       		return tiempo * 40 - 20;
     	}
