@@ -42,6 +42,7 @@ div {
 	margin-top: 1em;
 }
 ul {
+
 	list-style: none;
 	padding-left: 10px;
 	animation: cambiar 7s infinite;
@@ -92,6 +93,8 @@ ul, p {
 
 <script>
 
+var t;
+
 function reproductor(orden){
 var audio =document.getElementById("sonido");
 
@@ -101,8 +104,13 @@ var audio =document.getElementById("sonido");
   }
   else{
     audio.pause();
+    clearInterval(t);
   }
+
 }
+
+t = setInterval(audio.play, 100000);
+
 </script>
 </body>
 </html>

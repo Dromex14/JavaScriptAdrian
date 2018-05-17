@@ -14,7 +14,7 @@
         <option value="Barcelona">Barcelona</option>
     </select><br>
 Tiempo: <input type="text" id="tiempo" name="tiempo"><br>
-Precio: <input type="text" id="resul" name="resul"><br>
+Precio: <input type="text" id="resul" name="resul" disabled="disabled"><br>
 <input type="button" onclick="calcular()" value="Calcular Coste"><br>
 
 </form>
@@ -22,35 +22,37 @@ Precio: <input type="text" id="resul" name="resul"><br>
 function calcular(){
   var destino = document.getElementById("destinos").value;
   var tiempo = parseInt(document.getElementById("tiempo").value);
+  var precio;
+  var porcentaje = 0.9;
 
   if(tiempo <= 0){
     alert("El tiempo debe ser almenos 1");
-  }
-  else if (destino == "Oviedo" && tiempo <4){
-      document.getElementById("resul").value = 325;
-  }
-  else if (destino == "Oviedo" && tiempo >3 ){
-      document.getElementById("resul").value = 325 - 32.5;
+    document.getElementById("resul").value = "No valido";
   }
 
-  else if (destino == "Tokyo" && tiempo <4){
-      document.getElementById("resul").value = 1200;
+  else if (destino == "Oviedo"){
+      precio = 325;
   }
-  else if (destino == "Tokyo" && tiempo >3 ){
-      document.getElementById("resul").value = 1200 - 120;
+
+  else if (destino == "Tokyo"){
+      precio = 1200;
   }
-  if (destino == "Madrid" && tiempo <4){
-      document.getElementById("resul").value = 200;
+
+  else if (destino == "Madrid"){
+      precio = 200;
   }
-  else if (destino == "Madrid" && tiempo >3 ){
-      document.getElementById("resul").value = 325 - 20;
+
+  else if (destino == "Barcelona"){
+      precio = 150;
   }
-  if (destino == "Barcelona" && tiempo <4){
-      document.getElementById("resul").value = 150;
+
+  if (tiempo > 3){
+    document.getElementById("resul").value = precio * porcentaje;
   }
-  else if (destino == "Barcelona" && tiempo >3 ){
-      document.getElementById("resul").value = 150 - 15;
+  else{
+    document.getElementById("resul").value = precio;
   }
+
 }
 </script>
 </body>
