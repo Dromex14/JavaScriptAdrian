@@ -113,9 +113,10 @@
         		<option value="Madrid">Madrid</option>
        	 		<option value="Barcelona">Barcelona</option>
     		</select><br>
-		Tiempo Hotel: <input type="text" id="tiempoH" name="tiempoH"><br>
-		Tiempo Coche: <input type="text" id="tiempoC" name="tiempoC"><br>
-		Tiempo Avión: <input type="text" id="tiempoA" name="tiempoA"><br>
+		Tiempo: <input type="text" id="tiempo"><br>
+		Precio Hotel: <input type="text" disabled="disabled" id="precioH" name="precioH"><br>
+		Precio Coche: <input type="text" disabled="disabled" id="precioC" name="precioC"><br>
+		Precio Avión: <input type="text" disabled="disabled" id="precioA" name="precioA"><br>
 		Precio: <input type="text" disabled="disabled" id="resul" name="resul"><br>
 		<input type="button" onclick="calcular()" value="Calcular Coste"><br>
 		</form>
@@ -129,14 +130,18 @@
 
 	function calcular(){
 
-  		if(document.getElementById("tiempoH").value < 1 || document.getElementById("tiempoC").value < 1 || document.getElementById("tiempoA").value < 1){
+  		if(document.getElementById("tiempo").value < 1){
     		document.getElementById("resul").value = "Tiempo no valido";
   		}
-
-  		noches = calcularHotel(document.getElementById("tiempoH").value);
-  		estancia = calcularAvion(document.getElementById("tiempoA").value, document.getElementById("destinos").value);
-  		alquiler = calcularCoche(document.getElementById("tiempoC").value);
+			else{
+  		noches = calcularHotel(document.getElementById("tiempo").value);
+  		estancia = calcularAvion(document.getElementById("tiempo").value, document.getElementById("destinos").value);
+  		alquiler = calcularCoche(document.getElementById("tiempo").value);
+			document.getElementById("precioH").value = noches + "€";
+			document.getElementById("precioC").value = alquiler + "€";
+			document.getElementById("precioA").value = estancia + "€";
   		document.getElementById("resul").value = noches + estancia + alquiler + "€";
+		}
 	}
 
 	function calcularHotel(tiempo){
@@ -176,11 +181,9 @@
 		  else{
 		    return precio;
 		  }
-
-
 }
 
-	function calcularCoche(tiempo){
+function calcularCoche(tiempo){
 
     	if(tiempo < 3){
       		return tiempo * 40;
